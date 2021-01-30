@@ -18,6 +18,7 @@
   "homepage": "https://github.com/JLee98/StockBot#readme",
   "dependencies": {
     "discord.js": "^12.5.1",
-    "fs": "0.0.1-security"
+    "fs": "0.0.1-security",
+    "https": "^1.0.0"
   }
 }
