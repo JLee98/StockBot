@@ -1,10 +1,12 @@
+const Discord = require('discord.js');
+const fs  = require('fs');
 var config = require('./config.json');
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
 
 
-client.login(token);
+client.login(config.token);
 
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
@@ -13,10 +15,11 @@ for (const file of commandFiles) {
 	client.commands.set(command.name, command);
 }
 
-client.on('message' , message => {
-  if (!message.content.startsWith(prefix) || message.author.bot) return;
 
-  const args = message.content.slice(prefix.length).trim().split(/ +/);
+client.on('message' , message => {
+  if (!message.content.startsWith(config.prefix) || message.author.bot) return;
+
+  const args = message.content.slice(config.prefix.length).trim().split(/ +/);
   const commandName = args.shift().toLowerCase();
 
   const command = client.commands.get(commandName);
