@@ -15,7 +15,7 @@ module.exports = {
 		}
 		else {
 			var coin = args[0];
-			if(coin.length < 4) {
+			if(coin.length < 5) {
 				return message.channel.send("You need another coin to compare price! Ex: BTCUSD")
 			}
 			var path = config.fmp_get_quote + coin.toUpperCase() + "?apikey=" + config.fmp_api_key;
